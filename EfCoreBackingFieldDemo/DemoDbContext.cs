@@ -26,11 +26,12 @@ public class DemoDbContext : DbContext
             .HasMany(p => p.Posts)
             .WithOne(p => p.Blog)
             .HasForeignKey(p => p.BlogId);
-        
-        modelBuilder.Entity<Blog>()
-            .Metadata
-            .FindNavigation("Posts")
-            .SetPropertyAccessMode(PropertyAccessMode.Field);
+
+        // Tested to see if this made any diffrence
+        // modelBuilder.Entity<Blog>()
+        //    .Metadata
+        //    .FindNavigation("Posts")
+        //    .SetPropertyAccessMode(PropertyAccessMode.Field);
         
         modelBuilder.Entity<Post>()
             .HasKey(p => p.Id);
